@@ -1,0 +1,12 @@
+/Users/sarandadreshaj/Projects/e-commerce/Domain/bin/Debug/net9.0/Domain.deps.json
+/Users/sarandadreshaj/Projects/e-commerce/Domain/bin/Debug/net9.0/Domain.dll
+/Users/sarandadreshaj/Projects/e-commerce/Domain/bin/Debug/net9.0/Domain.pdb
+/Users/sarandadreshaj/Projects/e-commerce/Domain/obj/Debug/net9.0/Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/sarandadreshaj/Projects/e-commerce/Domain/obj/Debug/net9.0/Domain.AssemblyInfoInputs.cache
+/Users/sarandadreshaj/Projects/e-commerce/Domain/obj/Debug/net9.0/Domain.AssemblyInfo.cs
+/Users/sarandadreshaj/Projects/e-commerce/Domain/obj/Debug/net9.0/Domain.csproj.CoreCompileInputs.cache
+/Users/sarandadreshaj/Projects/e-commerce/Domain/obj/Debug/net9.0/Domain.sourcelink.json
+/Users/sarandadreshaj/Projects/e-commerce/Domain/obj/Debug/net9.0/Domain.dll
+/Users/sarandadreshaj/Projects/e-commerce/Domain/obj/Debug/net9.0/refint/Domain.dll
+/Users/sarandadreshaj/Projects/e-commerce/Domain/obj/Debug/net9.0/Domain.pdb
+/Users/sarandadreshaj/Projects/e-commerce/Domain/obj/Debug/net9.0/ref/Domain.dll
