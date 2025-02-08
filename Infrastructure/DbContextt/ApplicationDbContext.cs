@@ -1,16 +1,21 @@
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Domain.Entities;
 
 namespace Infrastructure.DbContextt{
     public class ApplicationDbContext : DbContext{
 
-        private readonly IConfiguration _configuration;
-         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options, IConfiguration configuration)
-            : base(options)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options){}
+
+        public ApplicationDbContext() {}
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            _configuration = configuration;
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseMySql(new MySqlServerVersion(new Version(8, 0, 2)));
+            }
         }
+
             public DbSet<User> Users { get; set; }
             public DbSet<Product> Products { get; set; }
             public DbSet<Category> Categories { get; set; }
@@ -26,12 +31,12 @@ namespace Infrastructure.DbContextt{
             modelBuilder.Entity<Product>()
             .HasOne<Category>()
             .WithMany()
-            .HasForeignKey(p => p.CategoryID);
+            .HasForeignKey(p => p.CategoryId);
             
             modelBuilder.Entity<Order>()
             .HasOne<User>()
             .WithMany()
-            .HasForeignKey(o => o.UserID); //order has a relationship with one user
+            .HasForeignKey(o => o.UserId); //order has a relationship with one user
 
             modelBuilder.Entity<OrderItem>()
             .HasOne<Order>()
@@ -41,17 +46,17 @@ namespace Infrastructure.DbContextt{
             modelBuilder.Entity<OrderItem>()
             .HasOne<Product>()
             .WithMany()
-            .HasForeignKey(oi => oi.ProductID);
+            .HasForeignKey(oi => oi.ProductId);
 
             modelBuilder.Entity<Review>()
             .HasOne<Product>()
             .WithMany()
-            .HasForeignKey(r => r.ProductID);
+            .HasForeignKey(r => r.ProductId);
 
             modelBuilder.Entity<Review>()
             .HasOne<User>()
             .WithMany()
-            .HasForeignKey(r => r.UserID);
+            .HasForeignKey(r => r.UserId);
 
             modelBuilder.Entity<ShoppingCart>()
             .HasOne(shc => shc.User)
