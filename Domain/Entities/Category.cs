@@ -1,6 +1,6 @@
 namespace Domain.Entities{
 public class Category{
-    public int CategoryID{get; set;}
+    public int CategoryId{get; set;}
     public String Name{get; set;}
     public String Description{get; set;}
      public DateTime CreatedAt{get; set;}
