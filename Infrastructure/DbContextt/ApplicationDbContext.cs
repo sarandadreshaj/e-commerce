@@ -12,7 +12,7 @@ namespace Infrastructure.DbContextt{
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseMySql(new MySqlServerVersion(new Version(8, 0, 2)));
+                optionsBuilder.UseMySql("Server=localhost;Database=ecommerce;User=root;Password=Forgotpassword11;", new MySqlServerVersion(new Version(8, 0, 2)));
             }
         }
 
