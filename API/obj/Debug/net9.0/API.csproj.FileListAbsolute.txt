@@ -44,3 +44,5 @@
 /Users/sarandadreshaj/Projects/e-commerce/API/bin/Debug/net9.0/Infrastructure.dll
 /Users/sarandadreshaj/Projects/e-commerce/API/bin/Debug/net9.0/Infrastructure.pdb
 /Users/sarandadreshaj/Projects/e-commerce/API/bin/Debug/net9.0/Domain.pdb
+/Users/sarandadreshaj/Projects/e-commerce/API/bin/Debug/net9.0/Application.dll
+/Users/sarandadreshaj/Projects/e-commerce/API/bin/Debug/net9.0/Application.pdb

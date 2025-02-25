@@ -26,6 +26,9 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
+              "/Users/sarandadreshaj/Projects/e-commerce/Application/Application.csproj": {
+                "projectPath": "/Users/sarandadreshaj/Projects/e-commerce/Application/Application.csproj"
+              },
               "/Users/sarandadreshaj/Projects/e-commerce/Infrastructure/Infrastructure.csproj": {
                 "projectPath": "/Users/sarandadreshaj/Projects/e-commerce/Infrastructure/Infrastructure.csproj"
               }
@@ -72,6 +75,69 @@
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
             },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.200/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/sarandadreshaj/Projects/e-commerce/Application/Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/sarandadreshaj/Projects/e-commerce/Application/Application.csproj",
+        "projectName": "Application",
+        "projectPath": "/Users/sarandadreshaj/Projects/e-commerce/Application/Application.csproj",
+        "packagesPath": "/Users/sarandadreshaj/.nuget/packages/",
+        "outputPath": "/Users/sarandadreshaj/Projects/e-commerce/Application/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/sarandadreshaj/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "/Users/sarandadreshaj/Projects/e-commerce/Infrastructure/Infrastructure.csproj": {
+                "projectPath": "/Users/sarandadreshaj/Projects/e-commerce/Infrastructure/Infrastructure.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }

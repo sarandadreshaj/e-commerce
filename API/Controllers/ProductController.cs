@@ -1,0 +1,120 @@
+using Microsoft.AspNetCore.Mvc;
+using Application.Services;
+using System;
+using System.Threading.Tasks;
+
+namespace WebApi.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class ProductsController : ControllerBase
+    {
+        private readonly ProductService _productService;
+
+        public ProductsController(ProductService productService)
+        {
+            _productService = productService;
+        }
+
+        // POST: api/products
+        [HttpPost]
+        public async Task<IActionResult> CreateProduct([FromBody] ProductService.ProductDto productDto)
+        {
+            if (productDto == null)
+            {
+                return BadRequest(new { Error = "Product data is required." }); 
+            }
+
+            try
+            {
+              var productInserted = await _productService.CreateAsync(productDto);
+               return Ok(new { Message = "Product created successfully!" , productStored=productInserted });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
+        // GET: api/products
+        [HttpGet]
+        public async Task<IActionResult> GetAllProducts()
+        {
+            try
+            {
+                var products = await _productService.GetAllAsync();
+                return Ok(products);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
+        // GET: api/products/5
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetProductById(int id)
+        {
+            try
+            {
+                var product = await _productService.GetByIdAsync(id);
+                if (product == null)
+                {
+                    return NotFound();
+                }
+                return Ok(product);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
+        // PUT: api/products/5
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateProduct(int id, [FromBody] ProductService.ProductDto productDto)
+        {
+            if (productDto == null)
+            {
+                return BadRequest("Product data is required.");
+            }
+
+            try
+            {
+                var product = await _productService.GetByIdAsync(id);
+                if (product == null)
+                {
+                    return NotFound();
+                }
+
+                await _productService.UpdateAsync(id, productDto);
+                return NoContent(); // Successfully updated
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
+        // DELETE: api/products/5
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteProduct(int id)
+        {
+            try
+            {
+                var product = await _productService.GetByIdAsync(id);
+                if (product == null)
+                {
+                    return NotFound();
+                }
+
+                await _productService.DeleteAsync(id);
+                return NoContent(); // Successfully deleted
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+    }
+}
