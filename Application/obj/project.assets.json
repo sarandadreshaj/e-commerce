@@ -791,6 +791,7 @@
   },
   "projectFileDependencyGroups": {
     "net9.0": [
+      "Domain >= 1.0.0",
       "Infrastructure >= 1.0.0"
     ]
   },
@@ -819,6 +820,9 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
+            "/Users/sarandadreshaj/Projects/e-commerce/Domain/Domain.csproj": {
+              "projectPath": "/Users/sarandadreshaj/Projects/e-commerce/Domain/Domain.csproj"
+            },
             "/Users/sarandadreshaj/Projects/e-commerce/Infrastructure/Infrastructure.csproj": {
               "projectPath": "/Users/sarandadreshaj/Projects/e-commerce/Infrastructure/Infrastructure.csproj"
             }

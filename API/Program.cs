@@ -9,13 +9,21 @@ using Infrastructure.Repositories.Implementations;
 
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+
 builder.Services.AddControllers();
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"), 
+    options.UseMySql("Server=localhost;Database=ecommerce;User=root;Password=Forgotpassword11;", 
     new MySqlServerVersion(new Version(8, 0, 2))));
 
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<ProductService>();
+
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<CategoryService>();
+
+
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>

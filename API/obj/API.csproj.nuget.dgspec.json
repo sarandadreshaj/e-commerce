@@ -28,9 +28,6 @@
             "projectReferences": {
               "/Users/sarandadreshaj/Projects/e-commerce/Application/Application.csproj": {
                 "projectPath": "/Users/sarandadreshaj/Projects/e-commerce/Application/Application.csproj"
-              },
-              "/Users/sarandadreshaj/Projects/e-commerce/Infrastructure/Infrastructure.csproj": {
-                "projectPath": "/Users/sarandadreshaj/Projects/e-commerce/Infrastructure/Infrastructure.csproj"
               }
             }
           }
@@ -105,6 +102,9 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
+              "/Users/sarandadreshaj/Projects/e-commerce/Domain/Domain.csproj": {
+                "projectPath": "/Users/sarandadreshaj/Projects/e-commerce/Domain/Domain.csproj"
+              },
               "/Users/sarandadreshaj/Projects/e-commerce/Infrastructure/Infrastructure.csproj": {
                 "projectPath": "/Users/sarandadreshaj/Projects/e-commerce/Infrastructure/Infrastructure.csproj"
               }

@@ -9,7 +9,6 @@
       "API/1.0.0": {
         "dependencies": {
           "Application": "1.0.0",
-          "Infrastructure": "1.0.0",
           "Microsoft.AspNetCore.OpenApi": "8.0.2",
           "Swashbuckle.AspNetCore": "7.2.0"
         },
@@ -185,6 +184,7 @@
       },
       "Application/1.0.0": {
         "dependencies": {
+          "Domain": "1.0.0",
           "Infrastructure": "1.0.0"
         },
         "runtime": {

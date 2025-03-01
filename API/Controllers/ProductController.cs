@@ -1,24 +1,26 @@
 using Microsoft.AspNetCore.Mvc;
 using Application.Services;
+using Application.DTOs;
 using System;
 using System.Threading.Tasks;
+using Infrastructure.DbContextt;
 
-namespace WebApi.Controllers
+namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductsController : ControllerBase
+    public class ProductController : ControllerBase
     {
         private readonly ProductService _productService;
 
-        public ProductsController(ProductService productService)
+        public ProductController(ProductService productService)
         {
             _productService = productService;
         }
 
         // POST: api/products
         [HttpPost]
-        public async Task<IActionResult> CreateProduct([FromBody] ProductService.ProductDto productDto)
+        public async Task<IActionResult> CreateProduct(ProductDto productDto)
         {
             if (productDto == null)
             {
@@ -72,7 +74,7 @@ namespace WebApi.Controllers
 
         // PUT: api/products/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateProduct(int id, [FromBody] ProductService.ProductDto productDto)
+        public async Task<IActionResult> UpdateProduct(int id, ProductDto productDto)
         {
             if (productDto == null)
             {
@@ -95,6 +97,24 @@ namespace WebApi.Controllers
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
+
+        // [HttpGet("test-connection")]
+        // public IActionResult TestConnection()
+        // {
+        //     using (var context = new ApplicationDbContext(/* pass options here */))
+        //     {
+        //         try
+        //         {
+        //             context.Database.CanConnect();
+        //             return Ok("Connection successful");
+        //         }
+        //         catch (Exception ex)
+        //         {
+        //             return StatusCode(500, $"Connection failed: {ex.Message}");
+        //         }
+        //     }
+        // }
+
 
         // DELETE: api/products/5
         [HttpDelete("{id}")]
