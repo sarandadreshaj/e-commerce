@@ -1,2 +1,43 @@
-/Infrastructure/DbContextt/ApplicationDbContext.cs
-Infrastructure/Repositories/Implementations/OrderRepository.cs
+# Build Folders
+bin/
+obj/
+out/
+
+# .NET dependencies
+*.dll
+*.exe
+*.pdb
+*.cache
+*.log
+*.tlog
+*.pidb
+*.csproj.user
+*.sln.docstates
+project.lock.json
+project.assets.json
+.nuget/
+packages/
+
+# Visual Studio Code settings
+.vscode/
+.vscode/**/*
+*.code-workspace
+
+# Rider/JetBrains settings (if using)
+.idea/
+
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+_*
+
+# Debugging & Runtime
+*.suo
+*.user
+*.userosscache
+*.sln.cache
+*.nupkg
+*.bak
+*.swp
+*.log
