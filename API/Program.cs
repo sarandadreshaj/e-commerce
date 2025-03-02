@@ -6,15 +6,18 @@ using Microsoft.OpenApi.Models;
 using Infrastructure.Repositories.Interfaces;
 using Application.Services;
 using Infrastructure.Repositories.Implementations;
-
+using System.Xml.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
+
+// Read the connection string from appsettings.json
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseMySql("Server=localhost;Database=ecommerce;User=root;Password=Forgotpassword11;", 
+    options.UseMySql(connectionString, 
     new MySqlServerVersion(new Version(8, 0, 2))));
 
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
@@ -22,8 +25,6 @@ builder.Services.AddScoped<ProductService>();
 
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<CategoryService>();
-
-
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
@@ -48,7 +49,6 @@ if (app.Environment.IsDevelopment())
     });
 }
 
-
 app.UseHttpsRedirection();
 
 var summaries = new[]
@@ -58,7 +58,7 @@ var summaries = new[]
 
 app.MapGet("/weatherforecast", () =>
 {
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
+    var forecast = Enumerable.Range(1, 5).Select(index =>
         new WeatherForecast
         (
             DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
@@ -78,5 +78,3 @@ record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
 {
     public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
 }
-
-

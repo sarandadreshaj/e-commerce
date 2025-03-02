@@ -7,7 +7,7 @@ using Infrastructure.DbContextt;
 
 namespace API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class ProductController : ControllerBase
     {
@@ -97,24 +97,6 @@ namespace API.Controllers
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
-
-        // [HttpGet("test-connection")]
-        // public IActionResult TestConnection()
-        // {
-        //     using (var context = new ApplicationDbContext(/* pass options here */))
-        //     {
-        //         try
-        //         {
-        //             context.Database.CanConnect();
-        //             return Ok("Connection successful");
-        //         }
-        //         catch (Exception ex)
-        //         {
-        //             return StatusCode(500, $"Connection failed: {ex.Message}");
-        //         }
-        //     }
-        // }
-
 
         // DELETE: api/products/5
         [HttpDelete("{id}")]

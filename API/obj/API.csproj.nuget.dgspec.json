@@ -28,6 +28,9 @@
             "projectReferences": {
               "/Users/sarandadreshaj/Projects/e-commerce/Application/Application.csproj": {
                 "projectPath": "/Users/sarandadreshaj/Projects/e-commerce/Application/Application.csproj"
+              },
+              "/Users/sarandadreshaj/Projects/e-commerce/Infrastructure/Infrastructure.csproj": {
+                "projectPath": "/Users/sarandadreshaj/Projects/e-commerce/Infrastructure/Infrastructure.csproj"
               }
             }
           }

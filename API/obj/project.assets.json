@@ -1267,6 +1267,7 @@
   "projectFileDependencyGroups": {
     "net9.0": [
       "Application >= 1.0.0",
+      "Infrastructure >= 1.0.0",
       "Microsoft.AspNetCore.OpenApi >= 8.0.2",
       "Swashbuckle.AspNetCore >= 7.2.0"
     ]
@@ -1298,6 +1299,9 @@
           "projectReferences": {
             "/Users/sarandadreshaj/Projects/e-commerce/Application/Application.csproj": {
               "projectPath": "/Users/sarandadreshaj/Projects/e-commerce/Application/Application.csproj"
+            },
+            "/Users/sarandadreshaj/Projects/e-commerce/Infrastructure/Infrastructure.csproj": {
+              "projectPath": "/Users/sarandadreshaj/Projects/e-commerce/Infrastructure/Infrastructure.csproj"
             }
           }
         }
