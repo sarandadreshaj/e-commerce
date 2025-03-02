@@ -1,7 +1,25 @@
-# Build Folders
-bin/
-obj/
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Ww][Ii][Nn]32/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
 out/
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+**/Properties/launchSettings.json
 
 # .NET dependencies
 *.dll
@@ -13,26 +31,12 @@ out/
 *.pidb
 *.csproj.user
 *.sln.docstates
-project.lock.json
 project.assets.json
 .nuget/
 packages/
 
-# Visual Studio Code settings
-.vscode/
-.vscode/**/*
-*.code-workspace
-
-# Rider/JetBrains settings (if using)
-.idea/
-
-# macOS system files
-.DS_Store
-.AppleDouble
-.LSOverride
-_*
-
-# Debugging & Runtime
+# Visual Studio files
+.vs/
 *.suo
 *.user
 *.userosscache
@@ -40,4 +44,63 @@ _*
 *.nupkg
 *.bak
 *.swp
-*.log
+*.[Cc]ache
+*.vspscc
+*.vssscc
+.builds
+*.pidb
+*.svclog
+*.dotCover
+
+# Visual Studio Code settings
+.vscode/
+.vscode/**/*
+*.code-workspace
+
+# Rider/JetBrains settings
+.idea/
+*.sln.iml
+
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+
+# NuGet Packages
+*.nupkg
+# NuGet Symbol Packages
+*.snupkg
+# The packages folder can be ignored because of Package Restore
+**/[Pp]ackages/*
+# except build/, which is used as an MSBuild target.
+!**/[Pp]ackages/build/
+
+# Local migrations
+*.dbmdl
+*.jfm
+
+# SQL Server files
+*.mdf
+*.ldf
+*.ndf
+
+# Entity Framework
+*.edmx
+
+# Test Results
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# Temporary files
+*~
+*.tmp
+*.temp
+
+*/[Bb]in/*
+*/[Oo]bj/*
