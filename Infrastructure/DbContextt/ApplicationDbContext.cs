@@ -7,9 +7,11 @@ namespace Infrastructure.DbContextt
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) 
         {
-            
+            /* The OnConfiguring method is where you typically set up the database connection string. 
+            However, if you're using Dependency Injection (DI) to provide DbContextOptions<ApplicationDbContext>, 
+            you don't need to define the connection string in OnConfiguring. Instead, you should rely on the 
+            configuration provided through DI. */
         }
-
 
         public DbSet<User> Users { get; set; }
         public DbSet<Product> Products { get; set; }
@@ -23,14 +25,15 @@ namespace Infrastructure.DbContextt
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Product>()
-                .HasOne<Category>()
-                .WithMany()
-                .HasForeignKey(p => p.CategoryId);
+                .HasOne(p => p.Category)  // Explicitly reference Category
+                .WithMany(c => c.Products) // Explicitly reference Products
+                .HasForeignKey(p => p.CategoryId)
+                .OnDelete(DeleteBehavior.Cascade); // Optional: Cascade delete products if category is deleted
             
-            modelBuilder.Entity<Order>()
-                .HasOne<User>()
-                .WithMany()
-                .HasForeignKey(o => o.UserId);
+             modelBuilder.Entity<Order>()
+                .HasOne(o => o.User) // Explicitly reference User
+                .WithMany(u => u.Orders) // Explicitly reference Orders
+                .HasForeignKey(o => o.UserId); // Foreign key property
 
             modelBuilder.Entity<OrderItem>()
                 .HasOne<Order>()
