@@ -40,7 +40,7 @@ namespace Infrastructure.Repositories
         public async Task<T> AddAsync(T entity)
         {
           var result=  await _dbSet.AddAsync(entity);
-          await _context.SaveChangesAsync();
+        //   await _context.SaveChangesAsync();
           return result.Entity;
         }
 
@@ -52,6 +52,11 @@ namespace Infrastructure.Repositories
         public void Delete(T entity)
         {
             _dbSet.Remove(entity);
+        }
+
+        public async Task SaveChangesAsync()
+        {
+            await _context.SaveChangesAsync(); // This saves changes to the database asynchronously
         }
     }
 }
