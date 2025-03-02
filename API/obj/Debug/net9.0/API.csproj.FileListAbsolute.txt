@@ -46,3 +46,6 @@
 /Users/sarandadreshaj/Projects/e-commerce/API/obj/Debug/net9.0/API.pdb
 /Users/sarandadreshaj/Projects/e-commerce/API/obj/Debug/net9.0/API.genruntimeconfig.cache
 /Users/sarandadreshaj/Projects/e-commerce/API/obj/Debug/net9.0/ref/API.dll
+/Users/sarandadreshaj/Projects/e-commerce/API/bin/Debug/net9.0/AutoMapper.dll
+/Users/sarandadreshaj/Projects/e-commerce/API/bin/Debug/net9.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+/Users/sarandadreshaj/Projects/e-commerce/API/bin/Debug/net9.0/Serilog.dll

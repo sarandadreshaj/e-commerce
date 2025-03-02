@@ -2,93 +2,88 @@ using Application.DTOs;
 using Application.Services;
 using Microsoft.AspNetCore.Mvc;
 
-
-namespace API.Controllers{
-
+namespace API.Controllers
+{
     [Route("api/[controller]/[action]")]
     [ApiController]
     public class CategoryController : ControllerBase
     {
         private readonly CategoryService _categoryService;
-        public CategoryController(CategoryService categoryService){
 
+        public CategoryController(CategoryService categoryService)
+        {
             _categoryService = categoryService;
         }
 
-         //POST : api/category
+        // POST : api/category/create
         [HttpPost]
-        public async Task<IActionResult> CreateCategory(CategoryDto categoryDto)
+        public async Task<IActionResult> CreateCategory(CreateCategoryDto categoryDto)
         {
-            if(categoryDto == null)
+            if (categoryDto == null)
             {
-                return BadRequest(new {Error = "Category data is required"});
+                return BadRequest(new { Error = "Category data is required" });
             }
             try
             {
-                var categoryInserted = await _categoryService.CreateAsync(categoryDto);
-                return Ok(new {Message = "Product inserted successfully!", categoryStored = categoryInserted});
+                var categoryInserted = await _categoryService.CreateCategoryAsync(categoryDto);
+                return Ok(new { Message = "Category inserted successfully!", categoryStored = categoryInserted });
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
 
-        //GET: api/categories
+        // GET: api/category/getall
         [HttpGet]
-        public async Task<IActionResult> GetAllCategories(){
-            try{
-                var categories = await _categoryService.GetAllAsync();
+        public async Task<IActionResult> GetAllCategories()
+        {
+            try
+            {
+                var categories = await _categoryService.GetAllCategoriesAsync();
                 return Ok(categories);
             }
-            catch(Exception ex) {
-                return StatusCode(500, $"Internal server error {ex.Message}");
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
 
+        // GET: api/category/getbyid/{id}
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetCategoryById(int id){
-            try{
-                var category = await _categoryService.GetByIdAsync(id);
-                if(category == null){
+        public async Task<IActionResult> GetCategoryById(int id)
+        {
+            try
+            {
+                var category = await _categoryService.GetCategoryByIdAsync(id);
+                if (category == null)
+                {
                     return NotFound();
                 }
                 return Ok(category);
-            }catch(Exception ex){
-                return StatusCode(500, $"Internal server error: {ex.Message}");
-            }
-        }
-
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateProduct(int id, CategoryDto categoryDto){
-            if(categoryDto == null){
-                return BadRequest("Product data is required");
-            }
-            try{
-                var category = await _categoryService.GetByIdAsync(id);
-                if(category == null){
-                    return NotFound();
-                }
-                await _categoryService.UpdateAsync(id, categoryDto);
-                return NoContent();
             }
             catch (Exception ex)
             {
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
-
         }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteCategory(int id){
+        // PUT: api/category/update/{id}
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateCategory(int id, CreateCategoryDto categoryDto)
+        {
+            if (categoryDto == null)
+            {
+                return BadRequest("Category data is required");
+            }
             try
             {
-                var category = await _categoryService.GetByIdAsync(id);
-                if(category == null){
+                var category = await _categoryService.GetCategoryByIdAsync(id);
+                if (category == null)
+                {
                     return NotFound();
                 }
-
-                await _categoryService.DeleteAsync(id);
+                await _categoryService.UpdateCategoryAsync(id, categoryDto);
                 return NoContent();
             }
             catch (Exception ex)
@@ -97,7 +92,25 @@ namespace API.Controllers{
             }
         }
 
+        // DELETE: api/category/delete/{id}
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteCategory(int id)
+        {
+            try
+            {
+                var category = await _categoryService.GetCategoryByIdAsync(id);
+                if (category == null)
+                {
+                    return NotFound();
+                }
 
+                await _categoryService.DeleteCategoryAsync(id);
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
     }
-
 }
