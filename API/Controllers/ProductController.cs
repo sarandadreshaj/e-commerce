@@ -20,7 +20,7 @@ namespace API.Controllers
 
         // POST: api/products
         [HttpPost]
-        public async Task<IActionResult> CreateProduct(ProductDto productDto)
+        public async Task<IActionResult> CreateProduct(CreateProductDto productDto)
         {
             if (productDto == null)
             {
@@ -29,8 +29,8 @@ namespace API.Controllers
 
             try
             {
-              var productInserted = await _productService.CreateAsync(productDto);
-               return Ok(new { Message = "Product created successfully!" , productStored=productInserted });
+              var productInserted = await _productService.CreateProductAsync(productDto);
+              return Ok(new { Message = "Product created successfully!" , productStored=productInserted });
             }
             catch (Exception ex)
             {
