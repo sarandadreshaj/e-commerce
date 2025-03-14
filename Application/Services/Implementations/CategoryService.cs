@@ -49,7 +49,6 @@ namespace Application.Services{
             // Map the properties from the DTO to the existing category
             _mapper.Map(categoryDto, existingCategory);
             _categoryRepository.Update(existingCategory);
-            await _categoryRepository.SaveChangesAsync();
         }
 
         public async Task DeleteCategoryAsync(int id)
@@ -60,7 +59,7 @@ namespace Application.Services{
                 throw new NotFoundException("Category not found");
 
             _categoryRepository.Delete(existingCategory);
-            await _categoryRepository.SaveChangesAsync();
+            // await _categoryRepository.SaveChangesAsync();
         }
 
     }

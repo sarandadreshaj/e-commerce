@@ -36,8 +36,8 @@ namespace Infrastructure.DbContextt
                 .HasForeignKey(o => o.UserId); // Foreign key property
 
             modelBuilder.Entity<OrderItem>()
-                .HasOne<Order>()
-                .WithMany()
+                .HasOne(o => o.Order)
+                .WithMany(oi => oi.OrderItems)
                 .HasForeignKey(oi => oi.OrderId);
 
             modelBuilder.Entity<OrderItem>()

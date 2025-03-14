@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Application.DTOs;
 using AutoMapper;
+using Application.CustomExceptions;
 
 namespace Application.Services
 {
@@ -27,42 +28,43 @@ namespace Application.Services
 
 
         // Get all products
-        public async Task<IEnumerable<Product>> GetAllAsync()
+        public async Task<IEnumerable<ProductDto>> GetAllProductsAsync()
         {
-            return await _productRepository.GetAllAsync();
+            var products = await _productRepository.GetAllAsync();
+            return _mapper.Map<IEnumerable<ProductDto>>(products);
         }
 
         // Get product by ID
-        public async Task<Product> GetByIdAsync(int id)
+        public async Task<ProductDto> GetProductByIdAsync(int id)
         {
-            return await _productRepository.GetByIdAsync(id);
+            var product = await _productRepository.GetByIdAsync(id);
+            if (product == null){
+                return null;
+            }
+            return _mapper.Map<ProductDto>(product);
         }
 
         // Update product
-        public async Task UpdateAsync(int id, ProductDto productDto)
+        public async Task UpdateProductAsync(int id, CreateProductDto productDto)
         {
-            var product = await _productRepository.GetByIdAsync(id);
-            if (product != null)
-            {
-                product.Name = productDto.Name;
-                product.Description = productDto.Description;
-                product.Price = productDto.Price;
-                product.StockQuantity = productDto.StockQuantity;
-                product.CategoryId = productDto.CategoryId;
-                product.UpdatedAt = DateTime.UtcNow;
-
-                _productRepository.Update(product);
+            var existingProduct = await _productRepository.GetByIdAsync(id);
+            if (existingProduct == null){
+                throw new NotFoundException("Product not found!");
             }
+            _mapper.Map(productDto, existingProduct);
+            _productRepository.Update(existingProduct);
+            
         }
 
         // Delete product
-        public async Task DeleteAsync(int id)
+        public async Task DeleteProductAsync(int id)
         {
-            var product = await _productRepository.GetByIdAsync(id);
-            if (product != null)
+            var existingProduct = await _productRepository.GetByIdAsync(id);
+            if (existingProduct == null)
             {
-                _productRepository.Delete(product);
+                throw new NotFoundException("Product not found!");
             }
+            _productRepository.Delete(existingProduct);
         }
     }
 }

@@ -8,11 +8,10 @@ namespace Business.Services.MappingProfiles
     {
         public MappingProfile() 
         {
-            // Mapping for User
-            // CreateMap<User, UserDto>();
-            // CreateMap<UserDto, User>();
-            // CreateMap<User, CreateUserDto>();
-            // CreateMap<CreateUserDto, User>();
+            CreateMap<User, UserDto>();
+            CreateMap<UserDto, User>();
+            CreateMap<User, CreateUserDto>();
+            CreateMap<CreateUserDto, User>();
 
             CreateMap<Product, ProductDto>();
             CreateMap<ProductDto, Product>();
