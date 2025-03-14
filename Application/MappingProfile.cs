@@ -14,13 +14,11 @@ namespace Business.Services.MappingProfiles
             // CreateMap<User, CreateUserDto>();
             // CreateMap<CreateUserDto, User>();
 
-            // Mapping for Product
-            // CreateMap<Product, ProductDto>();
-            // CreateMap<ProductDto, Product>();
-            // CreateMap<Product, CreateProductDto>();
-            // CreateMap<CreateProductDto, Product>();
+            CreateMap<Product, ProductDto>();
+            CreateMap<ProductDto, Product>();
+            CreateMap<Product, CreateProductDto>();
+            CreateMap<CreateProductDto, Product>();
 
-            // Mapping for Category
             CreateMap<Category, CategoryDto>();
             CreateMap<CategoryDto, Category>();
             CreateMap<Category, CreateCategoryDto>();

@@ -4,34 +4,27 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Application.DTOs;
+using AutoMapper;
 
 namespace Application.Services
 {
     public class ProductService
     {
         private readonly IProductRepository _productRepository;
+        private readonly IMapper _mapper;
 
-        public ProductService(IProductRepository productRepository)
+        public ProductService(IProductRepository productRepository, IMapper mapper)
         {
             _productRepository = productRepository;
+            _mapper = mapper;
         }
 
-
-        // Create Product
-        public async Task<Product> CreateAsync(ProductDto productDto)
-        {
-            var product = new Product
-            {
-                Name = productDto.Name,
-                Description = productDto.Description,
-                Price = productDto.Price,
-                StockQuantity = productDto.StockQuantity,
-                CategoryId = productDto.CategoryId,
-                CreatedAt = DateTime.UtcNow,
-                UpdatedAt = DateTime.UtcNow
-            };
-           return await _productRepository.AddAsync(product);
+        public async Task<ProductDto> CreateProductAsync(CreateProductDto productDto){
+            var product = _mapper.Map<Product>(productDto);
+            var createdProduct = await _productRepository.AddAsync(product);
+            return _mapper.Map<ProductDto>(createdProduct);
         }
+
 
         // Get all products
         public async Task<IEnumerable<Product>> GetAllAsync()

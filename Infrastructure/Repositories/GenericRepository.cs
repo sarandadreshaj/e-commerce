@@ -40,7 +40,7 @@ namespace Infrastructure.Repositories
         public async Task<T> AddAsync(T entity)
         {
           var result=  await _dbSet.AddAsync(entity);
-        //   await _context.SaveChangesAsync();
+          await _context.SaveChangesAsync();
           return result.Entity;
         }
 

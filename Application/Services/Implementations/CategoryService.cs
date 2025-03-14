@@ -17,17 +17,11 @@ namespace Application.Services{
 
         public async Task<CategoryDto> CreateCategoryAsync(CreateCategoryDto categoryDto)
         {
-            var category = _mapper.Map<Category>(categoryDto);
-            var createdCategory = await _categoryRepository.AddAsync(category);
-            
-            await _categoryRepository.SaveChangesAsync(); // Now saving changes explicitly
-
-            var updatedCategory = await _categoryRepository.GetByIdAsync(createdCategory.CategoryId);
-
-            return _mapper.Map<CategoryDto>(updatedCategory);
+            var category = _mapper.Map<Category>(categoryDto); //maps the incoming CreateCategoryDto object to Category entity. CategoryDTO contains only the required properties for creation.
+            var createdCategory = await _categoryRepository.AddAsync(category);//categorydto is converted to category
+            return _mapper.Map<CategoryDto>(createdCategory);//newly created  Category(createdCategory) is mapped back to CategoryDto
+            //this step ensures that the response does not expose unnecessary database details, but only relevant data in CategoryDto 
         }
-
-
 
         public async Task<IEnumerable<CategoryDto>> GetAllCategoriesAsync()
         {
